@@ -52,3 +52,17 @@ librosa.display.specshow(log,sr=sr,x_axis='time',y_axis='mel')
 plt.colorbar()
 plt.show()
 
+def Vocal():
+  X, fr = librosa.load('space_oddity.wav')  #Worked With David Bowie's Space Oddity
+  librosa.display.waveplot(X, sr=fr)
+  plt.show()
+  mfc = librosa.feature.mfcc(X,sr=fr)
+  librosa.display.specshow(mfc,sr=fr, x_axis='time')
+  plt.show()
+  n1 = 600
+  n2 = 700
+  plt.figure(figsize=(15,4))
+  plt.plot(X[n1:n2])
+  plt.show()
+  zero_cross = sum(librosa.zero_crossings(X[n1:n2], pad=False))   # Zero Crossing is 6
+
